@@ -1,4 +1,4 @@
-package com.st.authlight.security;
+package com.st.authlight.config.jwt;
 
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;

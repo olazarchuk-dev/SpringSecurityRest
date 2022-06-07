@@ -1,6 +1,6 @@
-package com.st.authlight.rest;
+package com.st.authlight.controller;
 
-import com.st.authlight.services.UserService;
+import com.st.authlight.service.UserService;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -23,7 +23,7 @@ public class AuthController {
     }
 
     @PostMapping(path = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody com.st.authlight.model.User getAuthUser() {
+    public @ResponseBody com.st.authlight.data.User getAuthUser() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth == null) {
             return null;

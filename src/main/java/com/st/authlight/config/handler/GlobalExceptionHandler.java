@@ -1,6 +1,6 @@
-package com.st.authlight;
+package com.st.authlight.config.handler;
 
-import com.st.authlight.security.JwtTokenRepository;
+import com.st.authlight.config.jwt.JwtTokenRepository;
 import lombok.Getter;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.session.SessionAuthenticationException;

@@ -1,7 +1,7 @@
-package com.st.authlight.services;
+package com.st.authlight.service;
 
-import com.st.authlight.model.User;
-import com.st.authlight.resources.UserRepository;
+import com.st.authlight.data.User;
+import com.st.authlight.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

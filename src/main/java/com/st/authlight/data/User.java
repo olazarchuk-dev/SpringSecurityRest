@@ -1,4 +1,4 @@
-package com.st.authlight.model;
+package com.st.authlight.data;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,7 +1,7 @@
-package com.st.authlight.rest;
+package com.st.authlight.controller;
 
-import com.st.authlight.model.User;
-import com.st.authlight.services.UserService;
+import com.st.authlight.data.User;
+import com.st.authlight.service.UserService;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;

@@ -1,8 +1,8 @@
-package com.st.authlight;
+package com.st.authlight.config;
 
-import com.st.authlight.security.JwtCsrfFilter;
-import com.st.authlight.security.JwtTokenRepository;
-import com.st.authlight.services.UserService;
+import com.st.authlight.config.jwt.JwtCsrfFilter;
+import com.st.authlight.config.jwt.JwtTokenRepository;
+import com.st.authlight.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;

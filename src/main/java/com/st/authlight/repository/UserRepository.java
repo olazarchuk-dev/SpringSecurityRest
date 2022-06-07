@@ -1,6 +1,6 @@
-package com.st.authlight.resources;
+package com.st.authlight.repository;
 
-import com.st.authlight.model.User;
+import com.st.authlight.data.User;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

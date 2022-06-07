@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringbootsecurityrestApplication {
+public class AuthLightTraiderApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringbootsecurityrestApplication.class, args);
+        SpringApplication.run(AuthLightTraiderApplication.class, args);
     }
 
 }
