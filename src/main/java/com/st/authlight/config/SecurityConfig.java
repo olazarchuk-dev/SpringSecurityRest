@@ -3,8 +3,7 @@ package com.st.authlight.config;
 import com.st.authlight.config.jwt.JwtCsrfFilter;
 import com.st.authlight.config.jwt.JwtTokenRepository;
 import com.st.authlight.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -18,27 +17,19 @@ import org.springframework.security.web.csrf.CsrfFilter;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 
 @Configuration
+@RequiredArgsConstructor
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    // ///
-    @Autowired
-    private UserService userService;
-
-    @Autowired
-    private JwtTokenRepository jwtTokenRepository;
-    // ///
-
-    @Autowired
-    @Qualifier("handlerExceptionResolver")
-    private HandlerExceptionResolver resolver;
+    private final UserService userService;
+    private final JwtTokenRepository jwtTokenRepository;
+    private final HandlerExceptionResolver handlerExceptionResolver;
 
     @Bean
     public PasswordEncoder devPasswordEncoder() {
         return NoOpPasswordEncoder.getInstance();
     }
 
-    // ///
     @Override
     protected void configure(AuthenticationManagerBuilder authenticationManager) throws Exception {
         authenticationManager.userDetailsService(userService);
@@ -50,7 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement()
                     .sessionCreationPolicy(SessionCreationPolicy.NEVER)
                 .and()
-                    .addFilterAt(new JwtCsrfFilter(jwtTokenRepository, resolver), CsrfFilter.class)
+                    .addFilterAt(new JwtCsrfFilter(jwtTokenRepository, handlerExceptionResolver), CsrfFilter.class)
                     .csrf().ignoringAntMatchers("/**")
                 .and()
                     .authorizeRequests()
@@ -63,13 +54,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                             "/v3/api-docs",
                             "/v3/api-docs/**",
                             "/management/**",
-                            "/auth-light-trader/**",
                             "/api/**",
                     })
                     .authenticated()
                 .and()
                     .httpBasic()
-                    .authenticationEntryPoint(((request, response, e) -> resolver.resolveException(request, response, null, e)));
+                    .authenticationEntryPoint(((request, response, e) -> handlerExceptionResolver.resolveException(request, response, null, e)));
     }
-    // ///
 }
