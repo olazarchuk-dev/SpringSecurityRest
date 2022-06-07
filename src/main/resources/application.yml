@@ -1,12 +1,20 @@
+server.port: 8080
+
 logging:
   level:
     com.st: debug
 
 spring:
   application.name: spring-security-rest
+  data:
+    mongodb:
+      password: 8J1yi21Zmqrwic41Pqc
+      username: user-api-sandbox-user
+      database: user_sandbox
+      host: 172.31.15.78
+      port: 27017
 
-server.port: 8080
-server-api.path.login: login/
+password.encoder.secret.key: 4D74317333637572336E30747233616C
 
 # configure a custom URL for the swagger-ui HTML page
 #springdoc:

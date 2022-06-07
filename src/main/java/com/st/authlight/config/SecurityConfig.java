@@ -63,7 +63,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                             "/v3/api-docs",
                             "/v3/api-docs/**",
                             "/management/**",
-                            "/auth-light-authenticated-trader/**",
+                            "/auth-light-trader/**",
                             "/api/**",
                     })
                     .authenticated()

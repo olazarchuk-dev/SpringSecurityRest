@@ -4,6 +4,7 @@ import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.Getter;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.security.web.csrf.CsrfTokenRepository;
 import org.springframework.security.web.csrf.DefaultCsrfToken;
@@ -23,11 +24,8 @@ import static org.springframework.http.HttpHeaders.ACCESS_CONTROL_EXPOSE_HEADERS
 public class JwtTokenRepository implements CsrfTokenRepository {
 
     @Getter
+    @Value("${password.encoder.secret.key}")
     private String secret;
-
-    public JwtTokenRepository() {
-        this.secret = "springrest";
-    }
 
     @Override
     public CsrfToken generateToken(HttpServletRequest httpServletRequest) {
@@ -47,8 +45,8 @@ public class JwtTokenRepository implements CsrfTokenRepository {
                     .compact();
         } catch (JwtException e) {
             e.printStackTrace();
-            //ignore
         }
+
         return new DefaultCsrfToken("x-csrf-token", "_csrf", token);
     }
 
