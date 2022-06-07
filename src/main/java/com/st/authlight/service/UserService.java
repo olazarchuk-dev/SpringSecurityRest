@@ -19,14 +19,6 @@ import java.util.Objects;
 public class UserService implements UserDetailsService {
     private final UserRepository userRepository;
 
-    public List<User> getAll() {
-        return userRepository.findAll();
-    }
-
-    public User getByLogin(String login) {
-        return userRepository.findByLoginIgnoreCase(login);
-    }
-
     @Override
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException { // TODO: -password ?
         User user = getByLogin(login);
@@ -34,5 +26,13 @@ public class UserService implements UserDetailsService {
             throw new UsernameNotFoundException(String.format("User %s is not found", login));
         }
         return new org.springframework.security.core.userdetails.User(user.getLogin(), user.getPassword(), true, true, true, true, new HashSet<>());
+    }
+
+    public User getByLogin(String login) {
+        return userRepository.findByLoginIgnoreCase(login);
+    }
+
+    public List<User> getAll() {
+        return userRepository.findAll();
     }
 }

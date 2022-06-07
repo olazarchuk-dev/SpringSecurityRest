@@ -25,10 +25,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final JwtTokenRepository jwtTokenRepository;
     private final HandlerExceptionResolver handlerExceptionResolver;
 
-    @Bean
-    public PasswordEncoder devPasswordEncoder() {
-        return NoOpPasswordEncoder.getInstance();
-    }
+//    @Bean
+//    public PasswordEncoder devPasswordEncoder() {
+//        return NoOpPasswordEncoder.getInstance();
+//    }
 
     @Override
     protected void configure(AuthenticationManagerBuilder authenticationManager) throws Exception {
