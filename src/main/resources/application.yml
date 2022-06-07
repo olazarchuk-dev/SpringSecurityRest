@@ -3,42 +3,12 @@ logging:
     com.st: debug
 
 spring:
-  application.name: auth-light-trader
-#  data:
-#    mongodb:
-#      password: 8J1yi21Zmqrwic41Pqc
-#      username: user-api-sandbox-user
-#      database: user_sandbox
-#      host: 172.31.15.78
-#      port: 27017
+  application.name: spring-security-rest
 
 server.port: 8080
 server-api.path.login: login/
 
-# configure a custom URL for the swagger-ui HTML page       <protocol>://<host>:<port>/auth-light-trader/swagger-ui/index.html
-springdoc:
-  swagger-ui.path: /auth-light-trader/index.html
-  api-docs.path: /auth-light-trader/v3/api-docs
-
-auth:
-  cookie.domain: ${AUTH_COOKIE_DOMAIN:localhost}
-  clients:
-    # Web site client
-    - client-id: webApp
-      client-secret: webApp
-      cookie:
-        name: gid
-        value: GA1.2.945037859.1632026763
-    # Swagger and manual testing
-    - client-id: internal
-      client-secret: internalst1
-
-password.encoder.secret.key: 4D74317333637572336E30747233616C
-
-jwt:
-  ttl:
-    access-ttl: 2592000  # 30 days: 30 * 24 * 60 * 60 = 2592000
-    refresh-ttl: 3110400 # = 3110400
-  secret:
-    access: MTEyMDEwNGIxMDg2Y2Q2YWRhZTM2NGI3YTMwNDEwMjY1MzUxMzI5MWQ0YjAyYjE4MzQxY2VlZGQ1NDUyYmUyMTg1YmFkMTgxMTc4MmViNzQzZDcyN2I5OWM5YTJmNDYyMDg3OWM5YzY1ZDRkOGEzODcwZDkyYmVlOTNiOGUwNTg=
-    refresh: Ro23s94JJS2312aswemmMMsd23sdHJfs
+# configure a custom URL for the swagger-ui HTML page
+#springdoc:
+#  swagger-ui.path: /spring-security-rest/index.html
+#  api-docs.path: /spring-security-rest/v3/api-docs

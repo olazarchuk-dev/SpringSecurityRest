@@ -19,7 +19,7 @@ import org.springframework.web.servlet.HandlerExceptionResolver;
 
 @Configuration
 @EnableWebSecurity
-public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     // ///
     @Autowired
@@ -54,7 +54,18 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                     .csrf().ignoringAntMatchers("/**")
                 .and()
                     .authorizeRequests()
-                    .antMatchers("/auth/login")
+                    .antMatchers(new String[]{
+                            "/webjars/**",
+                            "/swagger-resources/**",
+                            "/swagger-ui.html",
+                            "/swagger-ui/",
+                            "/swagger-ui/**",
+                            "/v3/api-docs",
+                            "/v3/api-docs/**",
+                            "/management/**",
+                            "/auth-light-authenticated-trader/**",
+                            "/api/**",
+                    })
                     .authenticated()
                 .and()
                     .httpBasic()
