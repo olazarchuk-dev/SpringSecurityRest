@@ -10,19 +10,10 @@ public class UserRepository {
 
     private List<User> users;
 
-//  + Long id
-//    String role
-//  + String login ......... "anton"
-//  + String password ...... "1234"
-//    Boolean passwordExpired
-//  - String firstname ..... "Антон"
-//  - String lastname ...... "Иванов"
-//  - Integer age .......... 20
-
     public UserRepository() {
         this.users = List.of(
-                new User(0L, "anton", "1234"),
-                new User(1L, "ivan", "12345"));
+                new User(0L, "ROLE_ADMINISTRATOR", "anton", "1234", false),
+                new User(1L, "ROLE_TRAIDER", "ivan", "12345", false));
     }
 
     public User getByLogin(String login) {
