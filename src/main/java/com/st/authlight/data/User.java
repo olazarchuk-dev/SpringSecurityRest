@@ -7,14 +7,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class User {
 
+    private Long id;
     private String login;
-
     private String password;
-
-    private String firstname;
-
-    private String lastname;
-
-    private Integer age;
-
 }
